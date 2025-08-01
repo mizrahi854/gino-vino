@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GINO VINO - חנות אלכוהול הוד השרון</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Assistant', sans-serif; background-color: #fff9f4; color: #3e2c1c; }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #6b3e1d, #3e2411);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-container { display: flex; align-items: center; gap: 10px; }
+    .logo-container img { height: 50px; border-radius: 6px; }
+    .site-title { font-size: 26px; font-weight: bold; color: white; text-decoration: none; }
+
+    .social-icons { display: flex; gap: 15px; }
+    .social-icons a { color: white; font-size: 20px; text-decoration: none; transition: color 0.3s; }
+    .social-icons a:hover { color: #d4a373; }
+
+    .hamburger { cursor: pointer; width: 30px; height: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+    .hamburger span { display: block; height: 4px; background: white; border-radius: 2px; }
+
+    /* Side Menu */
+    .side-menu {
+      position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
+      background: #3e2411; padding: 60px 20px; transition: right 0.3s; z-index: 999;
+    }
+    .side-menu a {
+      display: block; color: white; text-decoration: none; font-size: 20px; margin-bottom: 20px;
+    }
+    .side-menu.open { right: 0; }
+
+    /* Hero */
+    .hero { position: relative; height: 400px; overflow: hidden; }
+    .hero img { width: 100%; height: 400px; object-fit: cover; }
+
+    /* About Section */
+    .about-section {
+      max-width: 900px; margin: 50px auto; background: white;
+      padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;
+    }
+    .about-section h1 { font-size: 32px; margin-bottom: 15px; }
+    .about-section p { font-size: 18px; line-height: 1.8; margin-bottom: 20px; }
+
+    .about-gallery {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 15px; margin-top: 20px;
+    }
+    .about-gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+
+    /* Floating Button */
+    .floating-btn {
+      position: fixed; right: 15px; bottom: 20px;
+      width: 55px; height: 55px; border-radius: 50%;
+      background: white; overflow: hidden;
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3); z-index: 999;
+    }
+    .floating-btn img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+    footer {
+      background: #3e2411; color: white; text-align: center; padding: 20px; margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <a href="index.html"><img src="תמונות.jpg/logo.jpg" alt="GINO VINO"></a>
+    <a href="index.html" class="site-title">GINO VINO</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/gino_vino_israel" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="mailto:info@ginovino.com"><i class="fas fa-envelope"></i></a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="side-menu" id="sideMenu">
+    <a href="אודות.html" onclick="closeMenu()">אודות</a>
+  <a href="index.html" onclick="closeMenu()">דף הבית</a>
+    <a href="index.html#contact" onclick="closeMenu()">הזמנת מקום</a>
+    <a href="index.html#faq" onclick="closeMenu()">שאלות תשובות</a>
+
+    
+</div>
+
+<section class="hero" id="home">
+  <img src="תמונות.jpg/logo.jpg" alt="GINO VINO">
+</section>
+
+<section class="about-section">
+  <h1>אודות GINO VINO</h1>
+  <p>
+    ברוכים הבאים ל-GINO VINO – חנות האלכוהול המובילה בהוד השרון!  
+    אצלנו תמצאו מגוון עצום של יינות איכותיים, בירות מיוחדות, וויסקי מובחר,  
+    וכל מה שצריך לחוויית שתייה מושלמת.  
+    אנו מתמחים בייעוץ אישי ובשירות מקצועי, כדי להתאים לכם את המשקה המושלם לכל אירוע.
+  </p>
+
+  <div class="about-gallery">
+    <img src="תמונות.jpg/wine1.jpg" alt="יין איכותי">
+    <img src="תמונות.jpg/store.jpg" alt="חנות האלכוהול">
+    <img src="תמונות.jpg/wine2.jpg" alt="טעימות יין">
+  </div>
+</section>
+
+<a href="https://wa.me/972536210899" class="floating-btn" target="_blank">
+  <img src="תמונות.jpg/הורדה.jpeg" alt="WhatsApp">
+</a>
+
+<footer>
+  &copy; 2025 GINO VINO | כל הזכויות שמורות
+</footer>
+
+<script>
+function toggleMenu(){ document.getElementById('sideMenu').classList.toggle('open'); }
+function closeMenu(){ document.getElementById('sideMenu').classList.remove('open'); }
+</script>
+
+</body>
+</html>
