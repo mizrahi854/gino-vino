@@ -718,8 +718,9 @@ const confirmYes = document.getElementById("confirmYes");
 const confirmNo = document.getElementById("confirmNo");
 
 let selectedRating = 0;
-let currentUser = "";
+let currentUser = localStorage.getItem("ginovino_currentUser") || "";
 let reviewToDelete = null;
+let showAll = false;  // מצב הצגה: כל הביקורות או רק 4 אחרונות
 
 // טעינת ביקורות מ-localStorage
 let reviews = [];
@@ -732,6 +733,10 @@ function saveReviewsToStorage() {
   localStorage.setItem("ginovino_reviews", JSON.stringify(reviews));
 }
 
+function saveCurrentUserToStorage() {
+  localStorage.setItem("ginovino_currentUser", currentUser);
+}
+
 function renderStars(rating) {
   let starsHTML = "";
   for (let i = 1; i <= 5; i++) {
@@ -740,8 +745,10 @@ function renderStars(rating) {
   return `<span class="stars">${starsHTML}</span>`;
 }
 
-function renderReviews(showAll = false) {
+function renderReviews() {
   reviewsContainer.innerHTML = "";
+
+  // אם מצב 'הצג הכל' פעיל, מציג את כל הביקורות, אחרת רק 4 אחרונות
   const displayedReviews = showAll ? reviews : reviews.slice(-4);
 
   displayedReviews.forEach((review) => {
@@ -754,8 +761,7 @@ function renderReviews(showAll = false) {
       <small>${review.date}</small>
     `;
 
-    // רק מי שכתב את הביקורת רואה את כפתור המחיקה ליד הביקורת
-    if (review.name === currentUser) {
+    if (review.name === currentUser && currentUser !== "") {
       const delBtn = document.createElement("button");
       delBtn.className = "delete-btn";
       delBtn.innerHTML = "🗑";
@@ -769,10 +775,16 @@ function renderReviews(showAll = false) {
     reviewsContainer.appendChild(div);
   });
 
-  showAllBtn.style.display = reviews.length > 4 && !showAll ? "block" : "none";
+  // ניהול כפתור הצגת הכל/הסתר
+  if (reviews.length > 4) {
+    showAllBtn.style.display = "inline-block";
+    showAllBtn.textContent = showAll ? "הסתר ביקורות" : "הצג את כל הביקורות";
+  } else {
+    showAllBtn.style.display = "none";
+  }
 }
 
-// מחיקה של ביקורת לפי אינדקס — פונקציה לשימוש המתכנת בלבד
+// מחיקת ביקורת לפי אינדקס
 function deleteReview(index) {
   if (index >= 0 && index < reviews.length) {
     reviews.splice(index, 1);
@@ -803,6 +815,7 @@ confirmYes.addEventListener("click", () => {
     deleteReview(reviewToDelete);
     reviewToDelete = null;
     confirmModal.style.display = "none";
+    saveReviewsToStorage();
   }
 });
 
@@ -812,9 +825,11 @@ submitReview.addEventListener("click", () => {
     return;
   }
 
-  currentUser = reviewerName.value;
+  currentUser = reviewerName.value.trim();
+  saveCurrentUserToStorage();
+
   reviews.push({
-    name: reviewerName.value,
+    name: currentUser,
     text: reviewText.value,
     rating: selectedRating,
     date: new Date().toLocaleDateString("he-IL"),
@@ -823,7 +838,7 @@ submitReview.addEventListener("click", () => {
   saveReviewsToStorage();
   renderReviews();
 
-  reviewerName.value = "";
+  reviewerName.value = currentUser;
   reviewText.value = "";
   selectedRating = 0;
   updateStars();
@@ -846,13 +861,14 @@ function updateStars() {
 updateStars();
 
 showAllBtn.addEventListener("click", () => {
-  renderReviews(true);
+  showAll = !showAll;  // הפוך את מצב התצוגה
+  renderReviews();
 });
+
 
 
 
 </script>
 </body>
 </html>
-
 
