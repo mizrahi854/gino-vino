@@ -361,6 +361,118 @@ footer {
   color: #4a3b2c;
 }
 
+.reviews-section {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.review-card {
+  background: #fdf7f1;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: right;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.review-card .delete-btn {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.review-card h4 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.review-card .stars {
+  color: #f7c948;
+  margin-bottom: 8px;
+}
+
+.review-card small {
+  color: #777;
+  font-size: 12px;
+}
+
+.modal, .confirm-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content, .confirm-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.star-rating i {
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating i.active {
+  color: #f7c948;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-buttons .yes-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-buttons .no-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 </style>
 </head>
@@ -483,6 +595,42 @@ footer {
   </div>
 </section>
 
+<section class="reviews-section" id="reviews">
+  <h2>ביקורות לקוחות</h2>
+  <div class="reviews-container" id="reviewsContainer"></div>
+
+  <button id="showAllBtn" style="display:none;">📖 קרא את כל הביקורות</button>
+
+  <div class="add-review-container">
+    <button id="addReviewBtn">➕ הוסף ביקורת</button>
+  </div>
+</section>
+
+<!-- חלון הוספת ביקורת -->
+<div class="modal" id="reviewModal">
+  <div class="modal-content">
+    <h3>הוסף ביקורת</h3>
+    <input type="text" id="reviewerName" placeholder="שם מלא" required />
+    <div class="star-rating" id="starRating"></div>
+    <textarea id="reviewText" placeholder="כתוב את הביקורת שלך..."></textarea>
+    <div class="modal-buttons">
+      <button id="submitReview">שלח</button>
+      <button id="closeModal">בטל</button>
+    </div>
+  </div>
+</div>
+
+<!-- חלון אישור מחיקה -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-content">
+    <p>האם אתה בטוח שברצונך למחוק את הביקורת?</p>
+    <div class="confirm-buttons">
+      <button class="yes-btn" id="confirmYes">כן</button>
+      <button class="no-btn" id="confirmNo">לא</button>
+    </div>
+  </div>
+</div>
+
 
 <a href="https://wa.me/972536210899" class="floating-btn whatsapp" target="_blank">
   <img src="תמונות.jpg/הורדה.jpeg" alt="WhatsApp">
@@ -553,6 +701,158 @@ document.querySelectorAll(".faq-question").forEach(btn => {
   });
 });
 
+
+
+const reviewsContainer = document.getElementById("reviewsContainer");
+const addReviewBtn = document.getElementById("addReviewBtn");
+const reviewModal = document.getElementById("reviewModal");
+const closeModal = document.getElementById("closeModal");
+const submitReview = document.getElementById("submitReview");
+const starRating = document.getElementById("starRating");
+const reviewerName = document.getElementById("reviewerName");
+const reviewText = document.getElementById("reviewText");
+const showAllBtn = document.getElementById("showAllBtn");
+
+const confirmModal = document.getElementById("confirmModal");
+const confirmYes = document.getElementById("confirmYes");
+const confirmNo = document.getElementById("confirmNo");
+
+let selectedRating = 0;
+let currentUser = "";
+let reviewToDelete = null;
+
+// טעינת ביקורות מ-localStorage
+let reviews = [];
+const savedReviews = localStorage.getItem("ginovino_reviews");
+if (savedReviews) {
+  reviews = JSON.parse(savedReviews);
+}
+
+function saveReviewsToStorage() {
+  localStorage.setItem("ginovino_reviews", JSON.stringify(reviews));
+}
+
+function renderStars(rating) {
+  let starsHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    starsHTML += i <= rating ? "★" : "☆";
+  }
+  return `<span class="stars">${starsHTML}</span>`;
+}
+
+function renderReviews(showAll = false) {
+  reviewsContainer.innerHTML = "";
+  const displayedReviews = showAll ? reviews : reviews.slice(-4);
+
+  displayedReviews.forEach((review) => {
+    const div = document.createElement("div");
+    div.className = "review-card";
+    div.innerHTML = `
+      <h4>${review.name}</h4>
+      ${renderStars(review.rating)}
+      <p>${review.text}</p>
+      <small>${review.date}</small>
+    `;
+
+    // רק מי שכתב את הביקורת רואה את כפתור המחיקה ליד הביקורת
+    if (review.name === currentUser) {
+      const delBtn = document.createElement("button");
+      delBtn.className = "delete-btn";
+      delBtn.innerHTML = "🗑";
+      delBtn.addEventListener("click", () => {
+        reviewToDelete = reviews.indexOf(review);
+        confirmModal.style.display = "flex";
+      });
+      div.appendChild(delBtn);
+    }
+
+    reviewsContainer.appendChild(div);
+  });
+
+  showAllBtn.style.display = reviews.length > 4 && !showAll ? "block" : "none";
+}
+
+// מחיקה של ביקורת לפי אינדקס — פונקציה לשימוש המתכנת בלבד
+function deleteReview(index) {
+  if (index >= 0 && index < reviews.length) {
+    reviews.splice(index, 1);
+    saveReviewsToStorage();
+    renderReviews();
+  } else {
+    console.warn("Index מחיקה לא חוקי:", index);
+  }
+}
+
+// טעינה מיידית בעת פתיחת הדף
+renderReviews();
+
+addReviewBtn.addEventListener("click", () => {
+  reviewModal.style.display = "flex";
+});
+
+closeModal.addEventListener("click", () => {
+  reviewModal.style.display = "none";
+});
+
+confirmNo.addEventListener("click", () => {
+  confirmModal.style.display = "none";
+});
+
+confirmYes.addEventListener("click", () => {
+  if (reviewToDelete !== null) {
+    deleteReview(reviewToDelete);
+    reviewToDelete = null;
+    confirmModal.style.display = "none";
+  }
+});
+
+submitReview.addEventListener("click", () => {
+  if (!reviewerName.value.trim() || !reviewText.value.trim() || selectedRating === 0) {
+    alert("נא למלא את כל השדות ולבחור דירוג");
+    return;
+  }
+
+  currentUser = reviewerName.value;
+  reviews.push({
+    name: reviewerName.value,
+    text: reviewText.value,
+    rating: selectedRating,
+    date: new Date().toLocaleDateString("he-IL"),
+  });
+
+  saveReviewsToStorage();
+  renderReviews();
+
+  reviewerName.value = "";
+  reviewText.value = "";
+  selectedRating = 0;
+  updateStars();
+  reviewModal.style.display = "none";
+});
+
+function updateStars() {
+  starRating.innerHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement("i");
+    star.classList.add("fa", "fa-star");
+    if (i <= selectedRating) star.classList.add("active");
+    star.addEventListener("click", () => {
+      selectedRating = i;
+      updateStars();
+    });
+    starRating.appendChild(star);
+  }
+}
+updateStars();
+
+showAllBtn.addEventListener("click", () => {
+  renderReviews(true);
+});
+
+
+
 </script>
 </body>
 </html>
+
+
