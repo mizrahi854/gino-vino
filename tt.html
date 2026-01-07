@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>GINO VINO | חנות אלכוהול פרימיום</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+
+
+<!-- HEADER -->
+<header class="main-header">
+  <div class="logo">
+   
+  </div>
+
+<!-- ICON CART ABOVE -->
+<div class="top-cart">
+  <a href="cart.html" aria-label="עגלת קניות">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cart-count">0</span>
+  </a>
+</div>
+
+<!-- POPUP CONFIRMATION -->
+<div id="cart-popup" class="cart-popup">
+  <p>המוצר נוסף לעגלה!</p>
+  <div class="popup-buttons">
+    <a href="cart.html" class="go-cart">לעגלת הקניות</a>
+    <button class="continue-shopping">המשך בקניות</button>
+  </div>
+</div>
+
+
+<div class="top-bar">
+  <div class="top-icons">
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="mailto:info@ginovino.co.il" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+</div>
+
+
+  <nav class="desktop-nav">
+    <a href="#categories">קטגוריות</a>
+    <a href="#catalog">קטלוג</a>
+    <a href="#faq">שאלות נפוצות</a>
+    <a href="#contact">צור קשר</a>
+  </nav>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#categories">קטגוריות</a>
+  <a href="#catalog">קטלוג</a>
+  <a href="#faq">שאלות נפוצות</a>
+  <a href="#contact">צור קשר</a>
+</nav>
+
+<!-- HERO עם וידאו -->
+<section class="hero">
+  <video autoplay muted loop class="hero-video">
+    <source src="תמונת.jpg/WhatsApp Video 2025-07-31 at 21.30.25.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <h1>GINO VINO</h1>
+    <p>מבחר יינות, וויסקי ומשקאות איכות</p>
+    <a href="#catalog" class="hero-cta">לצפייה בקטלוג</a>
+  </div>
+</section>
+
+
+<section class="services" id="services">
+  <h2>השירותים שלנו</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon-circle">
+        <i class="fas fa-truck"></i> <!-- משלוחים -->
+      </div>
+      <h3>משלוחים מהירים</h3>
+      <p>משלוחים עד הבית ואיסוף עצמי לפי הנוחות שלך.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon-circle">
+        <i class="fas fa-wine-bottle"></i> <!-- יינות -->
+      </div>
+      <h3>מבחר פרימיום</h3>
+      <p>יינות, וויסקי ומשקאות איכותיים מכל העולם.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon-circle">
+        <i class="fas fa-hands-helping"></i> <!-- ייעוץ אישי -->
+      </div>
+      <h3>ייעוץ אישי</h3>
+      <p>צוות מקצועי ילווה אותך בבחירת המשקה האידיאלי.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon-circle">
+        <i class="fas fa-gift"></i> <!-- מארזים -->
+      </div>
+      <h3>מארזים מותאמים</h3>
+      <p>מארזים אישיים לחגים או אירועים מיוחדים.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ABOUT GINO VINO -->
+<section class="about" id="about">
+  <div class="about-container">
+    <img src="תמונת.jpg/logo (1).jpg" alt="GINO VINO" class="about-logo">
+    <div class="about-text">
+      <h2>אודות GINO VINO</h2>
+      <p>GINO VINO הוקמה מתוך אהבה לאלכוהול איכותי. אנו מציעים מגוון רחב של יינות, וויסקי ומשקאות פרימיום, עם שירות אישי ומקצועי ללקוחותינו.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CATEGORIES עם תמונות -->
+<section class="categories" id="categories">
+  <h2>קטגוריות</h2>
+  <div class="categories-grid">
+    <div class="category-card">
+      <img src="תמונת.jpg/WhatsApp Image 2025-07-31 at 21.35.29.jpeg" alt="יינות">
+      <span>יינות</span>
+    </div>
+    <div class="category-card">
+      <img src="תמונת.jpg/WhatsApp Image 2025-07-31 at 21.30.38.jpeg" alt="וויסקי">
+      <span>וויסקי</span>
+    </div>
+    <div class="category-card">
+      <img src="תמונת.jpg/logo (1).jpg" alt="בירות">
+      <span>בירות</span>
+    </div>
+    <div class="category-card">
+      <img src="תמונת.jpg/WhatsApp Image 2025-07-31 at 21.30.38.jpeg" alt="מארזים">
+      <span>מארזים</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog" id="catalog">
+  <h2>קטלוג מוצרים</h2>
+  <div class="catalog-grid">
+    <div class="product-card">
+      <h3>וויסקי ג׳יימסון</h3>
+      <p>וויסקי אירי איכותי</p>
+      <button>הוסף לסל</button>
+    </div>
+    <div class="product-card">
+      <h3>יין אדום פרימיום</h3>
+      <p>בקבוק 750 מ״ל</p>
+      <button>הוסף לסל</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ אינטראקטיבי -->
+<section class="faq" id="faq">
+  <h2>שאלות נפוצות</h2>
+  <div class="faq-item">
+    <button class="faq-question">יש משלוחים?</button>
+    <div class="faq-answer">כן, משלוחים עד הבית ואיסוף עצמי.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">אפשר להזמין בטלפון?</button>
+    <div class="faq-answer">בוודאי, יש כפתור התקשרות ישירה.</div>
+  </div>
+</section>
+
+
+<!-- פרטי החנות -->
+<div class="store-info" style="color: black;">
+  <h3>פרטי החנות</h3>
+  <p><strong>כתובת:</strong> דרך הרמתיים 35, הוד השרון</p>
+  <p ><strong>טלפון:</strong> 053-6210899</p>
+  <p><strong>שעות פעילות:</strong> א-ה 10:00–23:00, שישי 9:00–17:00, שבת 23:00-20:00</p>
+</div>
+  <iframe style="border:0; width:100%; height:300px; border-radius: 10px;"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.768068691841!2d34.8588!3d32.1533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4d4cbdb7a4c1%3A0x3f8d56c499ec11ef!2z15HXqNeV16jXmdeUINeX15DXnNeo!5e0!3m2!1siw!2sil!4v1690636400000"></iframe>
+</section >
+  <a style="text-align: center;" href="tel:0536210899" class="call-btn">התקשר עכשיו</a>
+</section>
+
+<!-- FLOATING BUTTON WhatsApp -->
+<a href="https://wa.me/972500000000" class="whatsapp-float" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+  <p>© 2025 GINO VINO</p>
+</footer>
+
+<script src="home.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="gallery-preview-section">
+  <h2>גלריה</h2>
+  <div class="preview-grid">
+    <div class="preview-item"><img src="תמונת.jpg/1.jpg" alt="תמונה 1"></div>
+    <div class="preview-item"><img src="תמונת.jpg/2.jpg" alt="תמונה 2"></div>
+    <div class="preview-item"><img src="תמונת.jpg/3.jpg" alt="תמונה 3"></div>
+    <div class="preview-item"><img src="תמונת.jpg/4.jpg" alt="תמונה 4"></div>
+  </div>
+  <button class="see-more-btn">ראה עוד</button>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close">&times;</span>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+  <div class="lightbox-content"></div>
+</div>
+
+<style>
+/* גלריה */
+.gallery-preview-section {
+  padding: 20px 0;
+  text-align: center;
+  background: transparent;
+}
+
+.gallery-preview-section h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #222;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.preview-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.preview-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.preview-item:hover img {
+  transform: scale(1.05);
+}
+
+/* זכוכית מגדלת */
+.preview-item::after {
+  content: "\f002";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  font-size: 24px;
+  color: rgba(255,255,255,0.9);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s, opacity 0.3s;
+  pointer-events: none;
+}
+
+.preview-item:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* כפתור ראה עוד */
+.see-more-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  background-color: #222;
+  color: #fff;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.see-more-btn:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3em;
+  color: #fff;
+  cursor: pointer;
+}
+
+.lightbox button.prev,
+.lightbox button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3em;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.lightbox .lightbox-content img,
+.lightbox .lightbox-content video {
+  max-width: 90%;
+  max-height: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .preview-grid {
+    grid-template-columns: 1fr;
+  }
+  .preview-item img {
+    height: 120px;
+  }
+}
+</style>  
+
+<script>
+const images = [
+  'תמונת.jpg/1.jpg','תמונת.jpg/תמונת.jpg/1dc46c78-eeb7-485b-94c4-b2c8e7d907f2.jpg.jpg','תמונת.jpg/2.jpg',
+  'תמונת.jpg/3.jpg','תמונת.jpg/4.jpg','תמונת.jpg/5.jpg',
+  'תמונת.jpg/6.jpg','תמונת.jpg/7.jpg','תמונת.jpg/8.jpg',
+  'תמונת.jpg/9.jpg','תמונת.jpg/10.jpg','תמונת.jpg/12.jpg',
+  'תמונת.jpg/13.jpg','תמונת.jpg/14.jpg','תמונת.jpg/15.jpg',
+  'תמונת.jpg/17.jpg','תמונת.jpg/18.jpg','תמונת.jpg/19.jpg',
+  'תמונת.jpg/21.jpg','תמונת.jpg/22.jpg','תמונת.jpg/23.jpg',
+  'תמונת.jpg/24.jpg','תמונת.jpg/25.jpg','תמונת.jpg/27.jpg',
+  'תמונת.jpg/111.jpg','תמונת.jpg/תמונת.jpg/WhatsApp Image 2025-07-31 at 21.30.38.jpeg.jpg',
+  'תמונת.jpg/תמונת.jpg/WhatsApp Image 2025-07-31 at 21.35.29.jpeg.jpg',
+  'תמונת.jpg/תמונת.jpg/וויסקי.jpg.jpg','תמונת.jpg/WhatsApp Video 2025-07-31 at 21.30.25.mp4'
+];
+
+const lightbox = document.getElementById('lightbox');
+const lightboxContent = document.querySelector('.lightbox-content');
+const closeBtn = document.querySelector('.lightbox .close');
+const nextBtn = document.querySelector('.lightbox .next');
+const prevBtn = document.querySelector('.lightbox .prev');
+let currentIndex = 0;
+
+function openLightbox(index) {
+  currentIndex = index;
+  showMedia();
+  lightbox.style.display = 'flex';
+}
+
+function showMedia() {
+  lightboxContent.innerHTML = '';
+  const src = images[currentIndex];
+  let element;
+  if (src.endsWith('.mp4')) {
+    element = document.createElement('video');
+    element.src = src;
+    element.controls = true;
+  } else {
+    element = document.createElement('img');
+    element.src = src;
+  }
+  lightboxContent.appendChild(element);
+}
+
+document.querySelectorAll('.preview-item').forEach((item, i) => {
+  item.addEventListener('click', () => openLightbox(i));
+});
+
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  showMedia();
+});
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showMedia();
+});
+
+document.querySelector('.see-more-btn').addEventListener('click', () => {
+  openLightbox(0);
+});
+</script>
