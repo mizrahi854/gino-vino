@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Assistant', sans-serif;
+  background: #f6f6f6;
+}
+
+.main-header {
+  background: #111;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #d4af37;
+}
+
+.cart-page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 40px;
+}
+
+.cart-products,
+.cart-summary {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.delivery label {
+  display: block;
+  margin: 10px 0;
+}
+
+.prices p,
+.prices h3 {
+  margin: 10px 0;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkout-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.checkout-form button {
+  background: #6b3e1d;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.terms {
+  font-size: 14px;
+}
+
+.pickup-date,
+.address-fields {
+  display: none;
+  margin-top: 15px;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+}
+
+#mobileNav {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: right 0.3s;
+}
+
+#mobileNav a {
+  color: #fff;
+  padding: 15px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+#mobileNav.active {
+  right: 0;
+}
+
+@media (max-width: 900px) {
+  .cart-page {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+
+
+/* Top cart icon */
+.top-cart {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 1000;
+  position: fixed;
+  z-index: 10;
+}
+.top-cart a {
+  color: #b3723c; /* צבע חם */
+  font-size: 28px;
+  position: relative;
+  text-decoration: none;
+}
+#cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #b3723c;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* POPUP */
+.cart-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fdf6f0;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 2000;
+  text-align: center;
+}
+.cart-popup p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #5a3a20;
+}
+.popup-buttons a,
+.popup-buttons button {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+}
+.popup-buttons a {
+  background: #b3723c;
+  color: white;
+}
+.popup-buttons button {
+  background: #eee;
+  color: #5a3a20;
+}
