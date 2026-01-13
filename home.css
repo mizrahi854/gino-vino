@@ -1178,3 +1178,11 @@ body, section {
 
 
   
+/* לוגו במובייל */
+@media (max-width: 768px) {
+  .logo img {
+    width: 100%;       /* תמלא את רוחב המכולה שלה */
+    height: auto;      /* תשמור על הפרופורציות */
+    object-fit: contain; /* תראה את כל התמונה בלי חיתוך */
+  }
+}
