@@ -234,3 +234,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // …שאר הקוד שלך כאן (משלוחים, חישוב מחירים, טופס וכו')
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileNav = document.getElementById("mobileNav");
+
+  // סוגר את המובייל נב בר כשנטען דף חדש
+  mobileNav.classList.remove("active");
+});
