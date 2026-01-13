@@ -1186,3 +1186,67 @@ body, section {
     object-fit: contain; /* תראה את כל התמונה בלי חיתוך */
   }
 }
+
+/* לוגו */
+.logo img {
+  max-width: 200px;      /* גודל מקסימלי ללוגו */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* קטגוריות */
+.categories-grid .category-card img {
+  width: 100%;
+  height: 250px;          /* גובה אחיד לכל התמונות */
+  object-fit: cover;      /* תמונה מתוחה למלא את המסגרת */
+  display: block;
+  border-radius: 12px;    /* פינות מעוגלות יפה */
+}
+
+/* גלריה */
+.gallery-grid img,
+.gallery-grid video {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* רספונסיביות לגלריה */
+@media(max-width: 768px) {
+  .gallery-grid img,
+  .gallery-grid video {
+    height: 120px;
+  }
+}
+
+/* גלריה תצוגה מוקדמת */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.preview-item {
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  height: 160px;
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+@media(max-width: 480px) {
+  .preview-item {
+    height: 180px;   /* גבוה יותר במובייל קטן */
+  }
+}
