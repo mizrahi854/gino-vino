@@ -1,0 +1,122 @@
+body {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            font-family: 'Heebo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* אזור הכותרת העליונה של המאמר עם תמונת רקע */
+        .article-hero {
+            position: relative;
+            padding: 150px 20px 80px;
+            text-align: center;
+            /* כאן אתה משנה את הקישור לתמונה לכל מאמר */
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), #0f172a), 
+                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1600') center/cover;
+            border-bottom: 1px solid #334155;
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .article-hero h1 {
+            color: #f8fafc;
+            font-size: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.3;
+        }
+
+        /* אזור התוכן המרכזי */
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+        }
+
+        .article-body h2, .article-body h3 {
+            color: #f8fafc;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .article-body h2 { font-size: 1.8rem; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        .article-body h3 { font-size: 1.4rem; color: #38bdf8; }
+
+        .article-body ul {
+            background: #1e293b;
+            padding: 20px 40px 20px 20px;
+            border-radius: 15px;
+            border: 1px solid #334155;
+            margin-bottom: 30px;
+        }
+
+        .article-body li {
+            margin-bottom: 10px;
+        }
+
+        /* טבלאות לחוק המכר וכו' */
+        .law-table { 
+            width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 1rem; 
+            background: #1e293b; border-radius: 10px; overflow: hidden; 
+        }
+        .law-table th, .law-table td { border: 1px solid #334155; padding: 12px; text-align: right; }
+        .law-table th { background-color: #0f172a; color: #38bdf8; }
+
+        /* קריאה לפעולה בסוף המאמר */
+        .article-cta {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #38bdf8;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .article-cta h3 {
+            color: #f8fafc;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .btn-back:hover { color: #38bdf8; }
+
+        .btn-primary-cta {
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary-cta:hover { background: #0ea5e9; }
