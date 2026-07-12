@@ -1,0 +1,366 @@
+/* =========================================================
+   Tchelet Engineering – Article Page Stylesheet (artical.css)
+   ========================================================= */
+
+:root {
+  --primary: #063760;
+  --primary-dark: #031f38;
+  --accent: #55C9DD;
+  --gold: #D8B446;
+  --gold-light: #e9c968;
+  --text: #2a2f36;
+  --muted: #6b7480;
+  --bg: #ffffff;
+  --bg-soft: #f7f6f2;
+  --border: #e6e3da;
+  --shadow-sm: 0 4px 14px rgba(6,55,96,.08);
+  --shadow-md: 0 12px 30px rgba(6,55,96,.12);
+  --shadow-lg: 0 24px 60px rgba(6,55,96,.18);
+  --radius: 14px;
+  --radius-lg: 22px;
+  --transition: .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* 1. Reset & Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  direction: rtl;
+  text-align: right;
+  background-color: var(--bg-soft);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Article Hero Section */
+.article-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 45vh;
+  padding: 60px 20px;
+  color: #ffffff;
+  z-index: 1;
+}
+
+/* Background overlay logic inside the inline style is respected, 
+   adding internal padding and text constraints here */
+.article-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  max-width: 900px;
+  line-height: 1.3;
+  margin-top: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-badge {
+  background-color: var(--gold);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 6px 18px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 3. Main Content Container */
+.article-body {
+  max-width: 850px;
+  margin: -40px auto 60px auto; /* Pulls the content slightly up into the hero */
+  background: var(--bg);
+  padding: 40px 50px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 2;
+}
+
+/* 4. Back Button Styling */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  background-color: var(--bg-soft);
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.btn-back:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  transform: translateX(5px); /* Smooth nudge in RTL when going back */
+  border-color: var(--primary);
+}
+
+/* 5. Typography inside Article */
+.article-body h2 {
+  color: var(--primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+
+.article-body h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+.article-body h3 {
+  color: var(--primary-dark);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+.article-body p {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 24px;
+  text-shadow: 0 0 1px rgba(0,0,0,0.01); /* Smooth text rendering */
+}
+
+/* 6. Lists Design */
+.article-body ul, .article-body ol {
+  margin-bottom: 30px;
+  padding-right: 20px; /* Space for custom bullet layout in RTL */
+  list-style: none; /* Clear defaults to build clean modern items */
+}
+
+.article-body li {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  position: relative;
+  padding-right: 25px;
+  color: var(--text);
+}
+
+/* Custom modern bullet point matching site colors */
+.article-body ul li::before {
+  content: "•";
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.6rem;
+  position: absolute;
+  right: 0;
+  top: -4px;
+}
+
+.article-body li strong {
+  color: var(--primary);
+}
+
+/* 7. Responsive Adaptations */
+@media (max-width: 768px) {
+  .article-hero {
+    min-height: 35vh;
+    padding: 40px 15px;
+  }
+
+  .article-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .article-body {
+    margin: -20px 15px 40px 15px;
+    padding: 30px 20px;
+    border-radius: var(--radius);
+  }
+
+  .article-body h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* =========================================================
+   CTA SECTION - PREMIUM DESIGN
+   ========================================================= */
+.article-cta {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 40px;
+    border-radius: var(--radius-lg);
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(6, 55, 96, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* הילה רקע עדינה מאחורי הטקסט */
+.article-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(85, 201, 221, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.article-cta h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.article-cta p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+/* עיצוב הכפתור המקצועי */
+.btn-primary-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--gold) 0%, #c4a137 100%);
+    color: var(--primary-dark) !important;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(216, 180, 70, 0.4);
+    background: linear-gradient(135deg, #e3c158 0%, var(--gold) 100%);
+}
+
+/* אפקט הברקה שעובר על הכפתור */
+.btn-primary-cta::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: goldShine 4s infinite;
+}
+
+@keyframes goldShine {
+    0% { left: -100%; }
+    15% { left: 200%; }
+    100% { left: 200%; }
+}
+
+/* Accessibility Widget */
+.a11y-toggle {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  font-size: 1.25rem;
+  z-index: 98;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.a11y-toggle:hover {
+  background: var(--gold);
+  color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.a11y-panel {
+  position: fixed;
+  bottom: 148px;
+  right: 24px;
+  width: 260px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: var(--transition);
+}
+
+.a11y-panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.a11y-panel-head {
+  padding: 15px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.a11y-options {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.a11y-options button {
+  padding: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.a11y-panel.active { 
+    display: block !important; 
+    opacity: 1 !important; 
+    visibility: visible !important; 
+}
